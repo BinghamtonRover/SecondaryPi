@@ -1,0 +1,11 @@
+[Unit]
+Description=Rover Video
+After=network-online.target
+
+[Service]
+ExecStart=/home/pi/start-video.sh
+ExecStop=/home/pi/kill-video.sh
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
