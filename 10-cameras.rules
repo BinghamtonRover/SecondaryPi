@@ -14,10 +14,12 @@
 #   https://bing-rover.gitbook.io/docs/v/software/onboard-computers/video/udev-rules
 
 # Realsense RGB: /dev/realsense_rgb
-SUBSYSTEM=="video4linux", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 435i RGB", SYMLINK+="realsense_rgb"
+SUBSYSTEMS=="usb", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 435i RGB", ENV{IS_RS_RGB}="t",
+SUBSYSTEMS=="video4linux", ATTRS{index}=="0", ENV{IS_RS_RGB}=="t", SYMLINK+="realsense_rgb"
 
 # Realsense Depth: /dev/realsense_depth
-SUBSYSTEM=="video4linux", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 435i Depth", SYMLINK+="realsense_depth"
+SUBSYSTEMS=="usb", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 435i Depth", ENV{IS_RS_DEPTH}="t"
+SUBSYSTEMS=="video4linux", ATTRS{index}=="2", ENV{IS_RS_DEPTH}=="t", SYMLINK+="realsense_depth"
 
 # The rear camera: /dev/rear_camera
 SUBSYSTEMS=="usb", KERNELS=="1-1.4", ENV{IS_REAR}="t"
