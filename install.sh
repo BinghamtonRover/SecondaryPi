@@ -14,11 +14,6 @@ git submodule update --init >&3
 echo "Building OpenCV. This could take up to 10 minutes..."
 cd opencv_ffi
 ./build.sh >&3
-# Add this export to ~/.bashrc if it's not already there
-if ! grep -Exq "export LD_LIBRARY_PATH.+opencv_ffi/dist" ~/.bashrc
-then
-  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$(pwd)/dist" >> ~/.bashrc
-fi
 cd ..
 
 echo "Compiling the video program. This could take up to a minute..."
