@@ -16,6 +16,16 @@ cd opencv_ffi
 ./build.sh >&3
 cd ..
 
+cd video/src
+if [ ! -f /usr/local/lib/librealsense2.so ]
+then
+  echo "Compiling librealsense. This could take up to 45 minutes..."
+  sh build.sh
+fi
+echo "Compiling RealSense FFI..."
+make shared
+cd ../..
+
 echo "Compiling the video program. This could take up to a minute..."
 cd video
 dart pub get >&3
