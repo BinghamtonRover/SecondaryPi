@@ -1,6 +1,3 @@
-[submodule "opencv_ffi"]
-	path = opencv_ffi
-	url = https://github.com/BinghamtonRover/OpenCV-FFI
 [submodule "video"]
 	path = video
 	url = https://github.com/BinghamtonRover/Video
